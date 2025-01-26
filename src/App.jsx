@@ -31,11 +31,11 @@ function App() {
     saveToLs();
   };
   const handleDelete = (e, id) => {
-    let newTodos = todos.filter((item) => {
-      return item.id !== id;
-    });
-    setTodos(newTodos);
-    saveToLs();
+        if (window.confirm("Are you sure you want to delete this task?")) {
+      let newTodos = todos.filter((item) => item.id !== id);
+      setTodos(newTodos);
+      saveToLs();
+    }
   };
   const handleAdd = () => {
     setTodos([...todos, { id: uuidv4(), todo, iscompleted: false }]);
